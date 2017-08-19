@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Seeder", "EFCore.Seeder\EFCore.Seeder.csproj", "{360DA02E-E1F0-47B8-98A1-2D7D840E0946}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Seeder.Tests", "EFCore.Seeder.Tests\EFCore.Seeder.Tests.csproj", "{8574E989-DAEB-470F-AC87-FAF3127FDFCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Seeder.Entities", "EFCore.Seeder.Entities\EFCore.Seeder.Entities.csproj", "{7239CC06-3C7B-4A01-8788-5181B45E446F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{360DA02E-E1F0-47B8-98A1-2D7D840E0946}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360DA02E-E1F0-47B8-98A1-2D7D840E0946}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360DA02E-E1F0-47B8-98A1-2D7D840E0946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8574E989-DAEB-470F-AC87-FAF3127FDFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8574E989-DAEB-470F-AC87-FAF3127FDFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8574E989-DAEB-470F-AC87-FAF3127FDFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8574E989-DAEB-470F-AC87-FAF3127FDFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7239CC06-3C7B-4A01-8788-5181B45E446F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7239CC06-3C7B-4A01-8788-5181B45E446F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7239CC06-3C7B-4A01-8788-5181B45E446F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7239CC06-3C7B-4A01-8788-5181B45E446F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
