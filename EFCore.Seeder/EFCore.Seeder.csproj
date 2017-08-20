@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <Authors>Néstor Daniel Altamirano</Authors>
+    <Company />
+    <Description>A library to seed databases from CSV files, using .NET Core and Entity Framework Core</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DanielAltamirano/EFCore.Seeder</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>EntityFrameworkCore, dotnetcore, seeder, seed</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
