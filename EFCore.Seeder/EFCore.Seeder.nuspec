@@ -6,12 +6,12 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</licenseUrl>
+    <licenseUrl>https://github.com/DanielAltamirano/EFCore.Seeder/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/DanielAltamirano/EFCore.Seeder</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First version of the package.</releaseNotes>
-    <copyright></copyright>
+    <releaseNotes>Upgraded to target .NET Core 2.2 and Entity Framework Core 2.2.1</releaseNotes>
+    <copyright>Copyright 2019</copyright>
     <tags>EntityFrameworkCore dotnetcore seeder seed</tags>
   </metadata>
 </package>
