@@ -1,4 +1,5 @@
 # EFCore.Seeder
+![alt text][logo]
 
 A library to seed databases from CSV files, using .NET Core 2.0 and Entity Framework Core 2.2.1
 
@@ -50,3 +51,5 @@ This would assume that we have a `Products.csv` file in the configured assembly,
 Also, please note that if we're going to update information as well as insert it, the `Products` entity must implement the `IEquatable<T>` interface, so we can use `product.Equal(other)` when finding the right entity to update. This is due to Entity Framework Core not having an `AddOrUpdate` method (as to this moment, maybe this has changed in EF Core 2.0).
 
 Please check out the test projects for more information on how to use the library.
+
+[logo]: https://github.com/DanielAltamirano/EFCore.Seeder/raw/master/EFSeederIcon.png "EFCore.Seeder"
