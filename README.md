@@ -25,7 +25,7 @@ Also, if the format for the CSV files needs to be changed, or the CsvHelper conf
 
 `SeederConfiguration.ResetConfiguration(csvConfiguration: csvConfiguration, manifestConfiguration: manifestConfiguration, assembly: typeof(PayrollContext).GetTypeInfo().Assembly);`
 
-Where `csvConfiguration` is an instance of `CsvConfiguration`, from the `CsvHelper` library, and `manifestConfiguration` is an instance of `ManifestConfiguration`. The last one is just a way to format the embedded resource file names to make them easy to find in the assembly. You can store the configuration in a json file and load it when setting everything up.
+Where `csvConfiguration` is an instance of `CsvHelper.Configuration.Configuration`, from the `CsvHelper` library, and `manifestConfiguration` is an instance of `ManifestConfiguration`. The last one is just a way to format the embedded resource file names to make them easy to find in the assembly. You can store the configuration in a json file and load it when setting everything up.
 
 ```
 "manifestConfiguration": {
@@ -48,7 +48,7 @@ Let's say we have a DbContext with a `Products` DbSet. We could do the following
 
 This would assume that we have a `Products.csv` file in the configured assembly, with all the required information to load into the Products entity.
 
-Also, please note that if we're going to update information as well as insert it, the `Products` entity must implement the `IEquatable<T>` interface, so we can use `product.Equal(other)` when finding the right entity to update. This is due to Entity Framework Core not having an `AddOrUpdate` method (as to this moment, maybe this has changed in EF Core 2.0).
+Also, please note that if we're going to update information as well as insert it, the `Products` entity must implement the `IEquatable<T>` interface, so we can use `product.Equal(other)` when finding the right entity to update. This is due to Entity Framework Core not having an `AddOrUpdate` method, so we need to either use the method `Add` or the method `Update`.
 
 Please check out the test projects for more information on how to use the library.
 
