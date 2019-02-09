@@ -126,8 +126,6 @@ namespace EFCore.Seeder.Tests
             SeederConfiguration.DbSetHelper = dbSetHelperMock.Object;
 
             #endregion
-            
-            SeederConfiguration.DbSetHelper = dbSetHelperMock.Object;
 
             var exception = Assert.Throws<Exception>(() => dbSetMock.Object.SeedFromResource(nameof(Product)));
 

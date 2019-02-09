@@ -1,2 +1,2 @@
-﻿Code, Name, ExtraInformation
-ABCDE,Product Name, Extra Information
+﻿Id, Code, Name, Description, ExtraInformation
+0, ABCDE, Product Name, Description, Extra Information

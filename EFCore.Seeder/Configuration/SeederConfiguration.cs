@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using CsvHelper.Configuration;
+using CsvConfiguration = CsvHelper.Configuration.Configuration;
 using EFCore.Seeder.Helpers;
 using EFCore.Seeder.Helpers.Interfaces;
 
@@ -22,11 +23,8 @@ namespace EFCore.Seeder.Configuration
 
             CsvConfiguration = csvConfiguration ?? new CsvConfiguration
             {
-                WillThrowOnMissingField = false,
-                IgnoreHeaderWhiteSpace = true,
-                IgnoreBlankLines = true,
-                TrimFields = true,
-                TrimHeaders = true
+                TrimOptions = TrimOptions.Trim,
+                IgnoreBlankLines = true
             };
 
             ManifestConfiguration = manifestConfiguration ?? new ManifestConfiguration
