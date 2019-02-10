@@ -37,6 +37,11 @@ Where `csvConfiguration` is an instance of `CsvHelper.Configuration.Configuratio
         "extension": "csv"
     }
 ```
+As written in that example, the library would search for a resource file, in the assembly we indicate, which would be formatted as follows
+```
+.<DbSet Entity>.csv
+```
+Then the library would get the first ocurrence of a resource which name is as indicated. If we point to a ```Products``` manifest, we'd need to name our file ```Products.csv```. Doesn't matter which folder we put it in, or how deep in the hierarchy goes. As all embedded resources would be referenced as ```<Assembly><Path to Resource><Resource filename>```, it would be picked up without problem.
 
 ### Usage
 
