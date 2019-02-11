@@ -11,6 +11,15 @@ A project based on [dpaquette/EntityFramework.Seeder](https://github.com/dpaquet
 
 ## How to use
 
+### TL;DR;
+1. Configure Entity Framework Core in your solution and get a DbContext ready.
+2. Add CSV files to your solution and set Build Action on each one of them to ```Embedded Resource```
+3. Make sure each one of the entities you want to insert or update implement the ```IEquatable<Class>``` interface.
+4. Create a new ```CsvHelper.Configuration.Configuration``` that conforms to your CSV files. [Please refer to their website](https://joshclose.github.io/CsvHelper/getting-started/) for more information.
+5. Create a ```ManifestConfiguration``` so ```EFCore.Seeder``` can find your CSV files.
+6. Add this line: ```SeederConfiguration.ResetConfiguration(csvConfiguration, manifestConfiguration, assembly: typeof(<Assembly>).GetTypeInfo().Assembly);``` where ```<Assembly>``` is the name of one of the classes in the same assembly where the CSV files are included. ```csvConfiguration``` and ```manifestConfiguration``` are the previously created instances.
+7. Add this line (and repeat as necessary): ```<DbContext>.<DbSet>.SeedDbSetIfEmpty(nameof(<Resource>));```. ```SeedDbSetIfEmpty``` is an extension method on ```DbSet```, and ```<Resource>``` is the name of the CSV file you want to seed into the database (without the extension ".csv")
+
 ### Configuration and setup
 
 This library requires all resource files (CSV files) to be added as `Embedded Resource` in a runtime available assembly. Once that requirement is met, the seeder needs to be configured using:
