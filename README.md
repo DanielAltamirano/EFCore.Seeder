@@ -14,7 +14,7 @@ A project based on [dpaquette/EntityFramework.Seeder](https://github.com/dpaquet
 ### TL;DR;
 1. Configure Entity Framework Core in your solution and get a DbContext ready.
 2. Add CSV files to your solution and set Build Action on each one of them to ```Embedded Resource```
-3. Make sure each one of the entities you want to insert or update implement the ```IEquatable<Class>``` interface.
+3. Make sure each one of the entities you want to insert or update implement the ```IEquatable<Class>``` interface. Also, if your entities include an Identity column, make sure to add the attribute ```[Ignore]``` to those, or make sure to set ```IDENTITY_INSERT``` **ON** on those tables where you want the tool to insert the identity columns you include in your CSV files.
 4. Create a new ```CsvHelper.Configuration.Configuration``` that conforms to your CSV files. [Please refer to their website](https://joshclose.github.io/CsvHelper/getting-started/) for more information.
 5. Create a ```ManifestConfiguration``` so ```EFCore.Seeder``` can find your CSV files.
 6. Add this line: ```SeederConfiguration.ResetConfiguration(csvConfiguration, manifestConfiguration, assembly: typeof(<Assembly>).GetTypeInfo().Assembly);``` where ```<Assembly>``` is the name of one of the classes in the same assembly where the CSV files are included. ```csvConfiguration``` and ```manifestConfiguration``` are the previously created instances.
