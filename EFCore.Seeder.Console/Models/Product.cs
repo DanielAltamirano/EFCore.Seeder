@@ -7,7 +7,7 @@ namespace EFCore.Seeder.Console.Models
     {
         [Ignore]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; }
         public string Description { get; set; }
 
         public bool Equals(Product other)
@@ -21,13 +21,12 @@ namespace EFCore.Seeder.Console.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Product) obj);
+            return obj.GetType() == this.GetType() && Equals((Product) obj);
         }
 
         public override int GetHashCode()
         {
-            return (Name != null ? Name.GetHashCode() : 0);
+            return Name != null ? Name.GetHashCode() : 0;
         }
     }
 }

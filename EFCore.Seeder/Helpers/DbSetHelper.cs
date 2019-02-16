@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using EFCore.Seeder.Helpers.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -39,7 +40,7 @@ namespace EFCore.Seeder.Helpers
                     Update(entity, dbEntity, keys);
                 }
                 
-                dbSet.Update(entity);
+                dbSet.Update(dbEntity);
             }
         }
 
@@ -55,9 +56,10 @@ namespace EFCore.Seeder.Helpers
 
         private static void UpdateForType<T>(IReflect type, T source, T destination, ICollection<string> keys) where T : class
         {
-            var myObjectFields = type.GetFields(
+            var myObjectFields = type.GetProperties(
                 BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
+            var pattern = @"<([^>]+)>";
             foreach (var fi in myObjectFields.Where(info => !keys.Contains(info.Name)))
             {
                 fi.SetValue(destination, fi.GetValue(source));
