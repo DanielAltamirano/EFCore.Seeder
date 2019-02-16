@@ -1,6 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using EFCore.Seeder.Helpers.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EFCore.Seeder.Helpers
 {
@@ -17,12 +24,46 @@ namespace EFCore.Seeder.Helpers
 
         public void AddOrUpdate<T>(DbSet<T> dbSet, T entity) where T : class
         {
-            var dbEntity = dbSet.FirstOrDefault(dbSetEntity => dbSetEntity.Equals(entity));
-
+            Expression<Func<T, bool>> predicate = dbSetEntity => dbSetEntity.Equals(entity);
+            var dbEntity = dbSet.FirstOrDefault(predicate.Compile());
+            
             if (dbEntity == null)
                 dbSet.Add(entity);
             else
-                dbSet.Update(entity);
+            {
+                var infrastructure = dbSet as IInfrastructure<IServiceProvider>;
+                var serviceProvider = infrastructure.Instance;
+
+                if (serviceProvider.GetService(typeof(ICurrentDbContext)) is ICurrentDbContext currentDbContext)
+                {
+                    var keys = currentDbContext.Context.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties.Select(x => x.Name).ToList();
+                    Update(entity, dbEntity, keys);
+                }
+                
+                dbSet.Update(dbEntity);
+            }
+        }
+
+        public void Update<T>(T o, T d, ICollection<string> keys) where T : class
+        {
+            var type = o.GetType();
+            while (type != null)
+            {
+                UpdateForType(type, o, d, keys);
+                type = type.BaseType;
+            }
+        }
+
+        private static void UpdateForType<T>(IReflect type, T source, T destination, ICollection<string> keys) where T : class
+        {
+            var myObjectFields = type.GetProperties(
+                BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+
+            var pattern = @"<([^>]+)>";
+            foreach (var fi in myObjectFields.Where(info => !keys.Contains(info.Name)))
+            {
+                fi.SetValue(destination, fi.GetValue(source));
+            }
         }
     }
 }
