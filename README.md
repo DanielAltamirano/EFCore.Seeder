@@ -1,7 +1,7 @@
 # EFCore.Seeder
 ![alt text][logo]
 
-A library to seed databases from CSV files, using .NET Core 2.0 and Entity Framework Core 2.2.1
+A library to seed databases from CSV files, using .NET Core 3.0 and Entity Framework Core 3.0.0
 
 A project based on [dpaquette/EntityFramework.Seeder](https://github.com/dpaquette/EntityFramework.Seeder), using EntityFramework Core instead of EF6, plus some improvements on how to handle resource files.
 
