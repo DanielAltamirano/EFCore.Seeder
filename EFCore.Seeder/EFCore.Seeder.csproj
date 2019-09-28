@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Néstor Daniel Altamirano</Authors>
     <Company />
     <Description>A library to seed databases from CSV files, using .NET Core and Entity Framework Core</Description>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
