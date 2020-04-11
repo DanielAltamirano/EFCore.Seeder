@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using CsvHelper.Configuration;
-using CsvConfiguration = CsvHelper.Configuration.Configuration;
+//using CsvConfiguration = CsvHelper.Configuration.Configuration;
+using CsvConfiguration = CsvHelper.Configuration.CsvConfiguration;
 using EFCore.Seeder.Helpers;
 using EFCore.Seeder.Helpers.Interfaces;
 
@@ -21,7 +22,7 @@ namespace EFCore.Seeder.Configuration
         {
             Assembly = assembly;
 
-            CsvConfiguration = csvConfiguration ?? new CsvConfiguration
+            CsvConfiguration = csvConfiguration ?? new CsvConfiguration(new System.Globalization.CultureInfo("en-US"))
             {
                 TrimOptions = TrimOptions.Trim,
                 IgnoreBlankLines = true
