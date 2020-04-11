@@ -9,7 +9,7 @@ namespace EFCore.Seeder.Console
     {
         static void Main(string[] args)
         {
-            var csvConfiguration = new CsvHelper.Configuration.Configuration
+            var csvConfiguration = new CsvHelper.Configuration.CsvConfiguration(new System.Globalization.CultureInfo("en-US")) // .Configuration
             {
                 Delimiter = ",",
                 PrepareHeaderForMatch = (s, i) => s.TrimStart().TrimEnd(),
