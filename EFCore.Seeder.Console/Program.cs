@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Globalization;
+using System.Reflection;
 using EFCore.Seeder.Configuration;
 using EFCore.Seeder.Console.Models;
 using EFCore.Seeder.Extensions;
@@ -9,7 +10,9 @@ namespace EFCore.Seeder.Console
     {
         static void Main(string[] args)
         {
-            var csvConfiguration = new CsvHelper.Configuration.Configuration
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+
+            var csvConfiguration = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.CurrentCulture)
             {
                 Delimiter = ",",
                 PrepareHeaderForMatch = (s, i) => s.TrimStart().TrimEnd(),
